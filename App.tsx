@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useContext, createContext, useCallback, useEffect, JSX} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
+} from 'react-native';
 
-export default function App() {
+import { NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const StatisticsContext = createContext<{
+  stats: number[];
+  updateStat: (num: number) => void;
+  clearStats: () => void;
+} | null>(null);
+
+const StatisticsProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
+  const [stats, setStats] = useState<number[]>(Array(9).fill(0));
+
+  const updateStat = useCallback((num: number) => {
+    setStats(prev => {
+      const updated = [...prev];
+      updated[num - 1] += 1;
+      return updated;
+    });
+  }, []);
+
+  const clearStats = useCallback(() => {
+    setStats(Array(9).fill(0));
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <StatisticsContext.Provider value={{ stats, updateStat, clearStats }}>
+        {children}
+      </StatisticsContext.Provider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
