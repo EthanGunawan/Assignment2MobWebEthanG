@@ -44,6 +44,18 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
   const [, setNumber] = useState('...');
   const context = useContext(StatisticsContext)!;
   const { updateStat } = context;
+  useEffect(() => {
+    setDisplayNumber('...');
+    setNumber('...');
+
+    const unsubscribe = navigation.addListener('focus', () => {
+      setDisplayNumber('...');
+      setNumber('...');
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
 
   return (
       <SafeAreaView style={styles.safeArea}>
