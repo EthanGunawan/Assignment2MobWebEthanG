@@ -1,4 +1,7 @@
 /*
+PROG 20261 ASSIGNMENT 2
+Ethan Gunawan
+991789737
 Project setup commands:
 cd {folder I put it in}
 npx create-expo-app Assignment2 --template blank-typescript
