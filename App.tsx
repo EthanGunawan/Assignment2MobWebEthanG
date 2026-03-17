@@ -55,6 +55,29 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
 
     return unsubscribe;
   }, [navigation]);
+  const generateNumber = useCallback(() => {
+    const finalNum = Math.floor(Math.random() * 9) + 1;
+    setNumber(finalNum.toString());
+    updateStat(finalNum);
+
+    const spinDuration = 800;
+    const stepDuration = 50;
+    const steps = spinDuration / stepDuration;
+
+    let currentStep = 0;
+
+    const spinInterval = setInterval(() => {
+      currentStep++;
+      const fakeNum = Math.floor(Math.random() * 9) + 1;
+      setDisplayNumber(fakeNum.toString());
+
+      if (currentStep >= steps) {
+        clearInterval(spinInterval);
+        setDisplayNumber(finalNum.toString());
+      }
+    }, stepDuration);
+  }, [updateStat]);
+
 
 
   return (
