@@ -83,10 +83,34 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
   return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
-          <Text>Random Number Generator</Text>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Random Number Generator</Text>
+          </View>
+
+          <View style={styles.numberContainer}>
+            <Text style={styles.numberText}>{displayNumber}</Text>
+          </View>
+
+          <View style={styles.buttonRow}>
+            <TouchableOpacity
+                style={styles.button}
+                activeOpacity={0.7}
+                onPress={generateNumber}
+            >
+              <Text style={styles.buttonText}>Generate</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+                activeOpacity={0.7}
+                onPress={() => navigation.navigate('Stats')}
+            >
+              <Text style={styles.buttonText}>View Statistics</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
   );
+
 };
 
 
