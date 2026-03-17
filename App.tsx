@@ -121,10 +121,21 @@ const StatsScreen = ({ navigation }: { navigation: any }) => {
   return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
-          <Text>Statistics</Text>
+          <View style={styles.header}>
+            <TouchableOpacity
+                style={styles.backButtonContainer}
+                onPress={() => navigation.goBack()}
+                activeOpacity={0.7}
+            >
+              <Text style={styles.backButton}>←</Text>
+            </TouchableOpacity>
+            <Text style={styles.headerText}>Statistics</Text>
+            <View style={styles.headerSpacer} />
+          </View>
         </View>
       </SafeAreaView>
   );
+
 };
 
 
