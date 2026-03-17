@@ -132,6 +132,16 @@ const StatsScreen = ({ navigation }: { navigation: any }) => {
             <Text style={styles.headerText}>Statistics</Text>
             <View style={styles.headerSpacer} />
           </View>
+          <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                  <View style={styles.statItem}>
+                    <Text style={styles.statText}>{item.label}</Text>
+                  </View>
+              )}
+              contentContainerStyle={styles.flatListContent}
+              showsVerticalScrollIndicator={false}
+          />
         </View>
       </SafeAreaView>
   );
