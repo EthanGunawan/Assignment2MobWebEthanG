@@ -77,9 +77,6 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
       }
     }, stepDuration);
   }, [updateStat]);
-
-
-
   return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -110,8 +107,26 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
         </View>
       </SafeAreaView>
   );
-
 };
+
+const StatsScreen = ({ navigation }: { navigation: any }) => {
+  const context = useContext(StatisticsContext)!;
+  const { stats, clearStats } = context;
+
+  const data = stats.map((count: number, i: number) => ({
+    key: (i + 1).toString(),
+    label: `Number ${i + 1}: ${count} times`,
+  }));
+
+  return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <Text>Statistics</Text>
+        </View>
+      </SafeAreaView>
+  );
+};
+
 
 
 const App = (): JSX.Element => {
@@ -124,7 +139,7 @@ const App = (): JSX.Element => {
                 contentStyle: { backgroundColor: '#b08968' },
               }}>
             <Stack.Screen name="Home" component={HomeScreen} options={{ statusBarStyle: 'light' }} />
-
+            <Stack.Screen name="Stats" component={StatsScreen} options={{ statusBarStyle: 'light' }} />
           </Stack.Navigator>
         </NavigationContainer>
       </StatisticsProvider>
