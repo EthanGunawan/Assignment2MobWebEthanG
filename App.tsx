@@ -1,3 +1,18 @@
+/*
+
+Project setup commands:
+cd {folder I put it in}
+npx create-expo-app Assignment2 --template blank-typescript
+cd Assignment2
+npx expo install @react-navigation/native @react-navigation/native-stack react-native-screens react-native-safe-area-context
+
+Links used:
+https://www.google.com/search?q=how+do+i+make+a+font+bold+inreact+native&oq=how+do+i+make+a+font+bold+inreact+native&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yDQgCEAAYhgMYgAQYigUyBwgDEAAY7wUyCggEEAAYogQYiQUyBwgFEAAY7wXSAQg0MzU1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8
+Week 9 material
+Week 8 material
+https://www.perplexity.ai/search/how-do-i-set-uiview-controller-D13doJmMQHmYAE7wxYJyVA 
+*/
+
 import React, {useState, useContext, createContext, useCallback, useEffect, JSX} from 'react';
 import {
   View,
