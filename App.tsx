@@ -10,6 +10,7 @@ import {
 
 import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
 
 const StatisticsContext = createContext<{
   stats: number[];
@@ -142,6 +143,22 @@ const StatsScreen = ({ navigation }: { navigation: any }) => {
               contentContainerStyle={styles.flatListContent}
               showsVerticalScrollIndicator={false}
           />
+          <View style={styles.buttonRow}>
+            <TouchableOpacity
+                style={styles.button}
+                activeOpacity={0.7}
+                onPress={() => clearStats()}
+            >
+              <Text style={styles.buttonText}>Clear Statistics</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+                activeOpacity={0.7}
+                onPress={() => navigation.goBack()}
+            >
+              <Text style={styles.buttonText}>Back to Home</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
   );
