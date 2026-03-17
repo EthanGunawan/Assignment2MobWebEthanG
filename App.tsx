@@ -1,18 +1,15 @@
 /*
-
 Project setup commands:
 cd {folder I put it in}
 npx create-expo-app Assignment2 --template blank-typescript
 cd Assignment2
 npx expo install @react-navigation/native @react-navigation/native-stack react-native-screens react-native-safe-area-context
-
 Links used:
 https://www.google.com/search?q=how+do+i+make+a+font+bold+inreact+native&oq=how+do+i+make+a+font+bold+inreact+native&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yDQgCEAAYhgMYgAQYigUyBwgDEAAY7wUyCggEEAAYogQYiQUyBwgFEAAY7wXSAQg0MzU1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8
 Week 9 material
 Week 8 material
 https://www.perplexity.ai/search/how-do-i-set-uiview-controller-D13doJmMQHmYAE7wxYJyVA 
 */
-
 import React, {useState, useContext, createContext, useCallback, useEffect, JSX} from 'react';
 import {
   View,
@@ -22,20 +19,16 @@ import {
   FlatList,
   SafeAreaView,
 } from 'react-native';
-
 import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
-
 const StatisticsContext = createContext<{
   stats: number[];
   updateStat: (num: number) => void;
   clearStats: () => void;
 } | null>(null);
-
 const StatisticsProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const [stats, setStats] = useState<number[]>(Array(9).fill(0));
-
   const updateStat = useCallback((num: number) => {
     setStats(prev => {
       const updated = [...prev];
@@ -43,18 +36,15 @@ const StatisticsProvider = ({ children }: { children: React.ReactNode }): JSX.El
       return updated;
     });
   }, []);
-
   const clearStats = useCallback(() => {
     setStats(Array(9).fill(0));
   }, []);
-
   return (
       <StatisticsContext.Provider value={{ stats, updateStat, clearStats }}>
         {children}
       </StatisticsContext.Provider>
   );
 };
-
 const HomeScreen = ({ navigation }: { navigation: any }) => {
   const [displayNumber, setDisplayNumber] = useState('...');
   const [, setNumber] = useState('...');
@@ -63,30 +53,24 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
   useEffect(() => {
     setDisplayNumber('...');
     setNumber('...');
-
     const unsubscribe = navigation.addListener('focus', () => {
       setDisplayNumber('...');
       setNumber('...');
     });
-
     return unsubscribe;
   }, [navigation]);
   const generateNumber = useCallback(() => {
     const finalNum = Math.floor(Math.random() * 9) + 1;
     setNumber(finalNum.toString());
     updateStat(finalNum);
-
     const spinDuration = 800;
     const stepDuration = 50;
     const steps = spinDuration / stepDuration;
-
     let currentStep = 0;
-
     const spinInterval = setInterval(() => {
       currentStep++;
       const fakeNum = Math.floor(Math.random() * 9) + 1;
       setDisplayNumber(fakeNum.toString());
-
       if (currentStep >= steps) {
         clearInterval(spinInterval);
         setDisplayNumber(finalNum.toString());
@@ -99,11 +83,9 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
           <View style={styles.header}>
             <Text style={styles.headerText}>Random Number Generator</Text>
           </View>
-
           <View style={styles.numberContainer}>
             <Text style={styles.numberText}>{displayNumber}</Text>
           </View>
-
           <View style={styles.buttonRow}>
             <TouchableOpacity
                 style={styles.button}
@@ -124,16 +106,13 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
       </SafeAreaView>
   );
 };
-
 const StatsScreen = ({ navigation }: { navigation: any }) => {
   const context = useContext(StatisticsContext)!;
   const { stats, clearStats } = context;
-
   const data = stats.map((count: number, i: number) => ({
     key: (i + 1).toString(),
     label: `Number ${i + 1}: ${count} times`,
   }));
-
   return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -177,11 +156,7 @@ const StatsScreen = ({ navigation }: { navigation: any }) => {
         </View>
       </SafeAreaView>
   );
-
 };
-
-
-
 const App = (): JSX.Element => {
   return (
       <StatisticsProvider>
@@ -198,7 +173,6 @@ const App = (): JSX.Element => {
       </StatisticsProvider>
   );
 };
-
 export default App;
 const styles = StyleSheet.create({
   safeArea: {
