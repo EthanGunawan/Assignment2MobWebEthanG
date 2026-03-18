@@ -13,6 +13,7 @@ Week 9 material
 Week 8 material
 https://www.perplexity.ai/search/how-do-i-set-uiview-controller-D13doJmMQHmYAE7wxYJyVA 
 https://www.perplexity.ai/search/i-get-this-error-on-my-expo-ap-OUjlYbk3Rq.zJ.U2vlHKOA
+https://www.perplexity.ai/search/prog-20261-assignment-2-ethan-yErlTTowSWGyotTPtKMW2A
 */
 import React, {useState, useContext, createContext, useCallback, useEffect, JSX} from 'react';
 import {
@@ -82,7 +83,7 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
     }, stepDuration);
   }, [updateStat]);
   return (
-      <SafeAreaView style={styles.safeArea}>
+      <View style={[styles.container, { paddingTop: 50 }]}>
         <View style={styles.container}>
           <View style={styles.header}>
             <Text style={styles.headerText}>Random Number Generator</Text>
@@ -107,7 +108,7 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
             </TouchableOpacity>
           </View>
         </View>
-      </SafeAreaView>
+      </View>
   );
 };
 const StatsScreen = ({ navigation }: { navigation: any }) => {
@@ -118,7 +119,7 @@ const StatsScreen = ({ navigation }: { navigation: any }) => {
     label: `Number ${i + 1}: ${count} times`,
   }));
   return (
-      <SafeAreaView style={styles.safeArea}>
+      <View style={[styles.container, { paddingTop: 50 }]}>
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity
@@ -158,7 +159,7 @@ const StatsScreen = ({ navigation }: { navigation: any }) => {
             </TouchableOpacity>
           </View>
         </View>
-      </SafeAreaView>
+      </View>
   );
 };
 const App = (): JSX.Element => {
