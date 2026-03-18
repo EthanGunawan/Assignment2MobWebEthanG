@@ -133,6 +133,7 @@ const StatsScreen = ({ navigation }: { navigation: any }) => {
             <View style={styles.headerSpacer} />
           </View>
           <FlatList
+          style={[styles.container, { paddingTop: 80 }]}
               data={data}
               renderItem={({ item }) => (
                   <View style={styles.statItem}>
