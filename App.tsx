@@ -12,6 +12,7 @@ https://www.google.com/search?q=how+do+i+make+a+font+bold+inreact+native&oq=how+
 Week 9 material
 Week 8 material
 https://www.perplexity.ai/search/how-do-i-set-uiview-controller-D13doJmMQHmYAE7wxYJyVA 
+https://www.perplexity.ai/search/i-get-this-error-on-my-expo-ap-OUjlYbk3Rq.zJ.U2vlHKOA
 */
 import React, {useState, useContext, createContext, useCallback, useEffect, JSX} from 'react';
 import {

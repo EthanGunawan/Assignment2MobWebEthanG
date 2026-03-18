@@ -15,7 +15,8 @@
       "supportsTablet": true,
       "infoPlist": {
         "UIViewControllerBasedStatusBarAppearance": true
-      }
+      },
+      "bundleIdentifier": "com.anonymous.Assignment2"
     },
     "android": {
       "adaptiveIcon": {
